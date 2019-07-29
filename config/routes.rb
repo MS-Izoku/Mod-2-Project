@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :likes
+  resources :likes , only: [:create , :destroy]
   resources :user_goals
-  resources :comments
+  resources :comments , only: [:new , :create , :destroy]
   resources :progress_updates
   resources :goals
   resources :users
