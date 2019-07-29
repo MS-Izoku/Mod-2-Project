@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+5.times do
+    User.create(name: Faker::Name.full_name , city: "Chicago" , programming_language: "Ruby")
+end
+
+Goal.create(title: "I am a Goal")
