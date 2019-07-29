@@ -16,12 +16,7 @@ class UserGoal < ApplicationRecord
         # UserGoal.where(completion: true , goal_id: goal_id) # get the users with "completion: true"
     end
 
-    def self.daily_reset
-        # it should reset the daily goals of users
-        UserGoal.where(frequency: "Daily" , completion: true).all.update(completion: false)
-    end
-
-    def self.sweekly_reset
-        # it should rest the weeky goals of the users , stretch goal
+    def self.reset_completion(freq) # freq is either daily or weekly
+        UserGoal.where(frequency: freq.titlecase , completion: true).all.update_all(completion: false)
     end
 end
