@@ -1,0 +1,6 @@
+<h1>Goals#Index</h1>
+<% @goals.each do |goal|%>
+    <li><%= link_to goal.name, goal_path(goal) %></li>
+<% end %>
+<br>
+<%= link_to 'New Goal', new_user_goal_path %>
