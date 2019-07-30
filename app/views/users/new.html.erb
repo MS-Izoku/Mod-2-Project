@@ -1,0 +1,29 @@
+<h1>App Name - Create User</h1>
+
+<%= form_for(@user) do |f| %>
+    
+    <%= f.label :name %>
+    <%= f.text_field :full_name %>
+    <br> <br> 
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <br> <br> 
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+    <br> <br>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+    <br> <br>
+    <%= f.label :city %>
+    <%= f.text_field :city %>
+    <br> <br>
+    <%= f.label :programming_language %>
+    <%= f.text_field :programming_language %>
+    <br> <br>
+    <%= f.label :img_url, "Profile Picture" %>
+    <%= f.text_field :img_url%>
+    <br> <br>
+    <%= f.submit %>
+
+
+    <% end %>
