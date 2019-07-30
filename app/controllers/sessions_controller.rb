@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
     def new
         session[:user] ||= nil
+        if session[:user] != nil
+            redirect_to user_path(User.where(username: session[:user]))
+        end
     end
 
     def create
