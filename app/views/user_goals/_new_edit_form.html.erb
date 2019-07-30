@@ -1,3 +1,18 @@
-<%= form_for @user_goal do |f| %>
-    <p> <%= f.submit 'Submit' %> </p>
+<%= form_for :user_goal do |f| %>
+    <div>
+    <%= f.label "Select a preset goal: "%>
+    <%= f.collection_select(:goal, Goal.all, :id, :name, prompt: true) %><br>
+    <%# Create new Goal instance %>
+    <%= render partial: 'new_goal_path' %>
+    </div>
+    <div>
+    <%= f.label "Choose Frequency:"%>
+    <% UserGoal.frequency_options.each do |option| %>
+        <ul><%= f.radio_button :frequency, option %>
+        <%= f.label option %></ul>
     <% end %>
+    </div>
+
+    
+
+<% end %>
