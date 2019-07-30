@@ -14,8 +14,10 @@
       <% if session[:user] == nil %>
         <p><%= link_to 'Log In' , login_path %></p>
       <% else %>
-        <p>Logged in as: <%= link_to session[:user] , user_path(User.where(username: session[:user])) %></p>
-        <p><%= link_to 'Log Out' , logout_path %></p>
+      <div class="text-right">
+      <p>Logged in as: <%= link_to session[:user] , user_path(User.find_by(username: session[:user])) %></p>
+      <%= link_to 'Logout' , '/logout' , method: :delete %>
+    </div>
         <% end %>
 
     </div>
