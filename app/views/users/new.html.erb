@@ -1,6 +1,8 @@
 <h1>App Name - Create User</h1>
 
-<%= form_for(@user) do |f| %>
+
+
+<div><%= form_for(@user) do |f| %>
     
     <%= f.label :name %>
     <%= f.text_field :full_name %>
@@ -18,12 +20,20 @@
     <%= f.text_field :city %>
     <br> <br>
     <%= f.label :programming_language %>
-    <%= f.text_field :programming_language %>
+    <%= f.select :programming_language, User.languages %>
     <br> <br>
     <%= f.label :img_url, "Profile Picture" %>
     <%= f.text_field :img_url%>
     <br> <br>
     <%= f.submit %>
 
+     <% end %></div>
 
-    <% end %>
+    <% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+
+   
