@@ -8,8 +8,8 @@ class UserGoal < ApplicationRecord
     end
 
     def set_complete
-        # self.completion = true
-        # ProgressUpdate.create(content: "Task Completed" , user_goal_id: self.id)
+        self.completion = true
+        ProgressUpdate.create(content: "Task Completed" , user_goal_id: self.id)
     end
 
     def users_with_completion(goal_id)

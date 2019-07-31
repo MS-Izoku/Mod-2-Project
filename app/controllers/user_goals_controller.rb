@@ -1,8 +1,9 @@
 class UserGoalsController < ApplicationController
-    before_action :find_user_goal, only: [:edit, :update, :show, :destory]
+    before_action :find_user_goal, only: [:edit, :update, :show, :destroy]
+    before_action :verify_login, only: [:new, :edit, :destroy]
     
     def new
-        redirect_to login_path and return if !logged_in?
+        # redirect_to login_path and return if !logged_in?
         @usergoal = UserGoal.new
     end
 
@@ -22,7 +23,7 @@ class UserGoalsController < ApplicationController
     end
     
     def edit
-        redirect_to login_path and return if !logged_in?
+        # redirect_to login_path and return if !logged_in?
     end 
 
     def update
@@ -36,6 +37,10 @@ class UserGoalsController < ApplicationController
     end
     
     private
+
+    def verify_login
+        redirect_to login_path and return if !logged_in?
+    end
 
     def find_user_goal
         @usergoal = UserGoal.find(params[:id])
