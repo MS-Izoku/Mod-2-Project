@@ -1,6 +1,8 @@
 <h1>App Name - Create User</h1>
 
-<%= form_for(@user) do |f| %>
+
+
+<div><%= form_for(@user) do |f| %>
     
     <%= f.label :name %>
     <%= f.text_field :full_name %>
@@ -25,5 +27,13 @@
     <br> <br>
     <%= f.submit %>
 
+     <% end %></div>
 
-    <% end %>
+    <% if @errors %>
+  <% @errors.each do |error| %>
+    <p><%= error %></p>
+  <% end %>
+<% end %>
+
+
+   
