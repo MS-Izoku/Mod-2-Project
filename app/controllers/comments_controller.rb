@@ -1,15 +1,21 @@
 class CommentsController < ApplicationController
-    
-    def create
-    @comment = Comment.new(comment_params)
-    if @comment.save
-    #redirect_to somewhere 
-    else 
-        render "new"
-    end
-    
+       
     def new
         @comment = Comment.new 
+    end
+
+    def create
+        # @comment = Comment.new(comment_params)
+        # @comment.user_id = session[:user_id]
+        # @comment.progress_update_id 
+        # if @comment.save
+        # #redirect_to somewhere
+        #     #redirect_to progress_update_path(@comment.progress_update)
+        # else 
+        #     #redirect_to
+        # end
+
+        redirect_to progress_update_path(@comment.progress_update)
     end
 
     def update
@@ -19,6 +25,11 @@ class CommentsController < ApplicationController
         else 
             render "edit"
         end 
-    end 
+    end
+
+    private
+    def comment_params
+        params.require(:comment).permit(:progress_update_id , :user_id , :content)
+    end
 
 end

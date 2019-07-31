@@ -9,7 +9,19 @@ class ProgressUpdatesController < ApplicationController
     end
 
     def show
-        @comment = Comment.new 
+        @progress_update = ProgressUpdate.find_by(id: params[:id])
+        @comment = Comment.new
+    end
+
+    def post_comment
+        @comment = Comment.new(comment_params)
+        @comment.user_id = session[:user_id]
+        @comment.progress_update_id = params[:id]
+        if @comment.save
+            redirect_to current_path
+        else
+            p "Invalid"
+        end
     end
 
     def new
@@ -43,5 +55,9 @@ class ProgressUpdatesController < ApplicationController
     private
     def update_params
         params.require(:progress_update).permit(:content , :user_goal_id)
+    end
+
+    def comment_params
+        params.require(:comment).permit(:user_id , :progress_update_id , :content)
     end
 end
