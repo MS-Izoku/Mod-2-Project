@@ -4,8 +4,8 @@
 <%= render 'profile' %>
 
 
-<% if current_user.id == @user.id %>
-<%= render 'active_user' %>
+<% if current_user.id == @user.id && logged_in? %>
+    <%= render 'active_user' %>
 <% end %>
 
 # link to the feed 

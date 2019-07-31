@@ -20,7 +20,7 @@
     <%= f.text_field :city %>
     <br> <br>
     <%= f.label :programming_language %>
-    <%= f.text_field :programming_language %>
+    <%= f.select :programming_language, User.languages %>
     <br> <br>
     <%= f.label :img_url, "Profile Picture" %>
     <%= f.text_field :img_url%>
