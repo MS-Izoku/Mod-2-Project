@@ -9,9 +9,7 @@ class UserGoalsController < ApplicationController
     
     def edit
         @usergoal = UserGoal.find(params[:id])
-    end 
-
-
+    end
 
     private
 

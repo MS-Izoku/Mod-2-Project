@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     def destroy
         @user.destroy 
         flash[:notice] = "Account Deleted. Sorry to see you go"
+        redirect_to login_path
         # need a path to a home page of some sort. 
     end 
 
