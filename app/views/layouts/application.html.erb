@@ -10,8 +10,9 @@
   </head>
 
   <body>
-    <div> <!-- Log in stuff -->
+
       <% if session[:user] == nil %>
+      <div> <!-- Log in stuff -->
         <p><%= link_to 'Log In' , login_path %></p>
       <% else %>
       <div class="text-right">
