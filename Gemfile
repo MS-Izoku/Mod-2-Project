@@ -1,8 +1,8 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-# ruby '2.6.1'
-ruby '2.5.1'
+ruby '2.6.1'
+# ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
@@ -26,11 +26,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
-<<<<<<< HEAD
-gem 'bcrypt', '~> 3.1.7'
-=======
  gem 'bcrypt', '~> 3.1.7'
->>>>>>> 51b50e6288f18d4a7b210d4436541779d33aae99
+
+# makes sure image type is actually an image (used for profile)
+ gem 'image_processing', '~> 1.2'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

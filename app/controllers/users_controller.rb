@@ -8,8 +8,7 @@ class UsersController < ApplicationController
     def index 
         @users = User.all
     end 
-
-
+    
     def create 
         @user = User.new(user_params)
         if @user.valid?
@@ -26,7 +25,6 @@ class UsersController < ApplicationController
     def edit 
     end 
 
-    
     def update
         @user.assign_attributes(user_params)
 
@@ -43,7 +41,6 @@ class UsersController < ApplicationController
         flash[:notice] = "Account Deleted. Sorry to see you go"
         # need a path to a home page of some sort. 
     end 
-
 
     private
     
