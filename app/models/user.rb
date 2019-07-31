@@ -10,8 +10,7 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true 
     validates :img_url, presence: true 
     validates :full_name, presence: true 
-    # validate :image_type
-    # has_one_attached :image
+    
 
 
     def like_count
