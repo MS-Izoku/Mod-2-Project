@@ -1,2 +1,13 @@
 <%= @progress_update.user_goal.goal.name %>
+
+<div>
+    <% @progress_update.comments.each do |comment| %>
+        <div>
+        <div><%= comment.user.username %></div>
+            <div><%= simple_format(comment.content) %></div>
+            <div><%= comment.created_at %></div>
+        </div>
+    <% end %>
+</div>
+
 <%= render 'new_comment' %>
