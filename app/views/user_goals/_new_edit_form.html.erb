@@ -1,9 +1,15 @@
-<%= form_for :user_goal do |f| %>
+<%= session[:user] %>
+<% if flash[:error] %>
+  <%= flash[:error] %>
+<% end %>
+
+
+<%= form_for @usergoal do |f| %>
     <div>
     <%= f.label "Select a preset goal: "%>
-    <%= f.collection_select(:goal, Goal.all, :id, :name, prompt: true) %><br>
+    <%= f.collection_select(:goal_id, Goal.all, :id, :name, prompt: true) %><br>
     <%# Create new Goal instance %>
-    <%= render partial: 'new_goal_path' %>
+    <%#= render partial: 'goals/new_edit_form'%>
     </div>
     <div>
     <%= f.label "Choose Frequency:"%>
@@ -11,8 +17,11 @@
         <ul><%= f.radio_button :frequency, option %>
         <%= f.label option %></ul>
     <% end %>
+    <%= f.label "Notes?"%>
+    <%= f.text_area :notes %>
+
     </div>
 
-    
+    <%= f.submit %>    
 
 <% end %>
