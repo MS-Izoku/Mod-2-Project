@@ -1,8 +1,11 @@
 class SessionsController < ApplicationController
+    #helpers included
+    
     def new
         session[:user] ||= nil
         if session[:user] != nil
-            redirect_to user_path(User.where(username: session[:user]))
+            #redirect_to user_path(User.where(username: session[:user]))
+            redirect_to user_path(current_user)
         end
     end
 
@@ -11,15 +14,18 @@ class SessionsController < ApplicationController
         password = params[:password]
         user = User.find_by(username: username)
         if user && user.authenticate(password)
+            session[:user_id] = user.id
             session[:user] = username
-            redirect_to '/'
+            redirect_to user_path(user)
         else
+            flash[:errors] = ["Invalid Credentials"]
             render 'new'
         end
     end
 
     def destroy
         session.delete :user
-        redirect_to '/'
+        session.delete :user_id
+        redirect_to new_user_path
     end
 end
