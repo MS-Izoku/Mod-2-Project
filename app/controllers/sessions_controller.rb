@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: username)
         if user && user.authenticate(password)
             session[:user] = username
-            redirect_to '/'
+            redirect_to user_path(user)
         else
             render 'new'
         end
@@ -20,6 +20,6 @@ class SessionsController < ApplicationController
 
     def destroy
         session.delete :user
-        redirect_to '/'
+        redirect_to new_user_path
     end
 end
