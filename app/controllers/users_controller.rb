@@ -1,21 +1,20 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:edit, :update, :show, :destroy, :index] 
+    before_action :find_user, only: [:edit, :update, :show, :destroy] 
 
     def new
         @user = User.new 
     end 
 
-    def index 
-        @users = User.all
-    end 
-
-
+    
     def create 
         @user = User.new(user_params)
         if @user.valid?
            @user.save 
+           session[:user_id] = @user.id
+           session[:user] = @user.username
             redirect_to user_path(@user)
         else 
+            @errors = @user.errors.full_messages
             render :new
         end
     end 
@@ -26,7 +25,6 @@ class UsersController < ApplicationController
     def edit 
     end 
 
-    
     def update
         @user.assign_attributes(user_params)
 
@@ -43,7 +41,6 @@ class UsersController < ApplicationController
         flash[:notice] = "Account Deleted. Sorry to see you go"
         # need a path to a home page of some sort. 
     end 
-
 
     private
     
