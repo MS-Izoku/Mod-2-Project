@@ -5,15 +5,6 @@ class CommentsController < ApplicationController
     end
 
     def create
-        # @comment = Comment.new(comment_params)
-        # @comment.user_id = session[:user_id]
-        # @comment.progress_update_id 
-        # if @comment.save
-        # #redirect_to somewhere
-        #     #redirect_to progress_update_path(@comment.progress_update)
-        # else 
-        #     #redirect_to
-        # end
 
         redirect_to progress_update_path(@comment.progress_update)
     end
@@ -27,9 +18,16 @@ class CommentsController < ApplicationController
         end 
     end
 
+    def destroy
+        comment = Comment.find_by(id: params[:id])
+        update = comment.progress_update
+        comment.delete
+        redirect_to progress_update_path(update)
+    end
+
+
     private
     def comment_params
         params.require(:comment).permit(:progress_update_id , :user_id , :content)
     end
-
 end

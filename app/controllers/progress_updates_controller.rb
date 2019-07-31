@@ -24,6 +24,12 @@ class ProgressUpdatesController < ApplicationController
         end
     end
 
+    def delete_comment
+        @comment = Comment.find_by(comment_params)
+        #@comment.delete
+        redirect_to '/'
+    end
+
     def new
         @progress_update = ProgressUpdate.new
     end

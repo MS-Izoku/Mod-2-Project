@@ -1,0 +1,6 @@
+<% @progress_updates.each do |update| %>
+    <div>
+        <%= link_to update.user_goal.user.username , user_path(update.user_goal.user) %>
+        <%= link_to update.user_goal.goal.name , user_goal_path(update.user_goal) %>
+    </div>
+<% end %>

@@ -1,8 +1,13 @@
-<h1>UserGoals#Show</h1>
+<h1><%= @usergoal.goal.name %>: <%= @usergoal.user.username %></h1>
 
-<%= @usergoal.user.full_name %>
-<%= @usergoal.user.username %>
-<br><%= @usergoal.frequency %>
-<br><%= @usergoal.completion %>
-<br><%= @usergoal.notes %>
+<div>
+    <%= @usergoal.user.full_name %>
+    <%= @usergoal.user.username %>
+    <%= @usergoal.frequency %>
+    <%= @usergoal.completion %>
+</div>
+
+<div>
+<%= @usergoal.notes %>
+</div>
 
