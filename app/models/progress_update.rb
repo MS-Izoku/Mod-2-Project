@@ -5,7 +5,6 @@ class ProgressUpdate < ApplicationRecord
 
     has_many :users , through: :comments
 
-
     def like_count  # we can use this to sort later
         self.likes.count
     end
@@ -25,14 +24,12 @@ class ProgressUpdate < ApplicationRecord
     end
 
     def goal_completion_status=(status)
-        # had to monkey patch to account or a nil
         if self.user_goal != nil
             if status == true || status == "1"
                 status = true
             else
                 status = false
             end
-
             self.user_goal.completion = status
         end
     end

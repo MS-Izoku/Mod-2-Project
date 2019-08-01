@@ -8,8 +8,6 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true 
     validates :img_url, presence: true 
     validates :full_name, presence: true 
-    
-
 
     def like_count
         self.likes.count

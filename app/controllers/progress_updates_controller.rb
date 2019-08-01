@@ -5,17 +5,16 @@ class ProgressUpdatesController < ApplicationController
             redirect_to login_path
         end
         @progress_updates = ProgressUpdate.all
+        # byebug
     end
 
     def show
-        #Show me the individual page for this user_goal 
-
         @progress_update = ProgressUpdate.find_by(id: params[:id].to_i)
-        
         @comment = Comment.new
     end
 
     def post_comment
+        #redirect_to new_comment_path
         @comment = Comment.new(comment_params)
         @comment.user_id = session[:user_id]
         @comment.progress_update_id = params[:id]
@@ -41,7 +40,6 @@ class ProgressUpdatesController < ApplicationController
         @progress_update = ProgressUpdate.new(update_params)
         @usergoal = UserGoal.find(params[:user_goal_id])
         @progress_update.user_goal_id = @usergoal.id
-        
 
         if @progress_update.save
             @usergoal.set_complete

@@ -9,7 +9,6 @@ class UserGoalsController < ApplicationController
     def create
         @usergoal = UserGoal.new_for_user(current_user, usergoal_params)
 
-        
         if @usergoal.save
             flash[:success] = "UserGoal successfully created"
             redirect_to @usergoal

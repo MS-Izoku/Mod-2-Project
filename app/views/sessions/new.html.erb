@@ -2,14 +2,20 @@
     <p><%= flash[:error] %></p>
 </div>
 
-<div>
+<div class="container bg-san-marino pt-3 pb-3">
     <%= form_tag '/login' do %>
-        <h3>Username: <%= text_field_tag :username %></h3>
-        <h3>Password: <%= password_field_tag :password %></h3>
-        <%= submit_tag 'Submit' %>
+        
+        <h3 class="text-center"><%= text_field_tag :username , nil , placeholder: "Username"%></h3>
+        <h3 class="text-center"><%= password_field_tag :password , nil , placeholder: "Password" %></h3>
+        
+        <div class="text-center">
+            <%= submit_tag 'Submit' , class:"btn" %>
+        </div>
     <% end %>
+
+
+<h4 class="text-center">-or-</h4>
+    <div class="text-center">
+        <%= link_to 'Create New Account', new_user_path , class:"btn"%>
+    </div>
 </div>
-
-<h4>-or-</h4>
-
-<%= link_to 'Create New Account', new_user_path %>

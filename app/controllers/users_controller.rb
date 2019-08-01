@@ -49,8 +49,7 @@ class UsersController < ApplicationController
 
         @user.destroy 
         flash[:notice] = "Account Deleted. Sorry to see you go"
-        redirect_to feed_path 
-        
+        redirect_to feed_path         
     end 
 
     private
@@ -58,7 +57,6 @@ class UsersController < ApplicationController
     def find_user
         @user = User.find_by(id: params[:id])
     end
-
 
     def user_params
         params.require(:user).permit(:username, :password, :password_confirmation, :full_name, :city, :programming_language, :img_url)
