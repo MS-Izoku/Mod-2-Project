@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :comments , only: [:new , :create , :destroy]
   resources :progress_updates
   resources :goals
-  resources :users
+  resources :users, except: :index
 
   get '/login' , to: 'sessions#new' , as: 'login'
   post '/login' , to: 'sessions#create'
