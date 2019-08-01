@@ -3,6 +3,12 @@ class UserGoal < ApplicationRecord
     belongs_to :goal
     has_many :progress_updates
 
+    def self.new_for_user(user, params)
+        self.new(params).tap do |user_goal|
+            user_goal.user = user
+        end        
+    end
+
     def self.frequency_options
         ["Daily" , "Weekly"]
     end
