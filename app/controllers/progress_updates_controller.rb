@@ -31,24 +31,19 @@ class ProgressUpdatesController < ApplicationController
     end
 
     def new
-        if UserGoal.where(user_id: session[:user_id]).first == nil
-            redirect_to new_user_goal_path
-        end
+        @usergoal = UserGoal.find(params[:user_goal_id])
         @progress_update = ProgressUpdate.new
-        @current_goals = UserGoal.where(id: session[:user_id]).to_a
     end
 
     def create
         @progress_update = ProgressUpdate.new(update_params)
-        if @progress_update.save
-            # functions in the model to account for nil/numerical-string values getting passed
-            completion = false
-            if params[:goal_completion_status] == "1"
-                completion = true
-            end
+        @usergoal = UserGoal.find(params[:user_goal_id])
+        @progress_update.user_goal_id = @usergoal.id
+        
 
-            @progress_update.user_goal.update(completion: completion)
-            redirect_to progress_update_path(@progress_update)
+        if @progress_update.save
+            @usergoal.set_complete
+            redirect_to user_posts_path(current_user)
         else
             render 'new'
         end
