@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
     #helpers included
     
+
     def new
-        session[:user] ||= nil
-        if session[:user] != nil
-            #redirect_to user_path(User.where(username: session[:user]))
+        if session[:user_id]
+            # byebug
             redirect_to user_path(current_user)
         end
     end
@@ -24,8 +24,8 @@ class SessionsController < ApplicationController
     end
 
     def destroy
-        session.delete :user
-        session.delete :user_id
+        session.delete(:user_id)
+        # session.destroy :user_id
         redirect_to login_path
     end
 end

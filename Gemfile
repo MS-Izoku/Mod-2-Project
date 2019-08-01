@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.1'
+#ruby '2.6.1'
+<<<<<<< HEAD
 
+=======
+ruby '2.5.1'
+>>>>>>> 1329e97f25a9208e9ae58d3f0aec7076a08c05b9
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

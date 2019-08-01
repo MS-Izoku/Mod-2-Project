@@ -11,10 +11,10 @@
 
   <body>
 
-      <% if session[:user] == nil %>
+      <% if session[:user_id] == nil %>
       <div> <!-- Log in stuff -->
         <p><%= link_to 'Log In' , login_path %></p>
-      <% else %>
+      <% elsif session[:user_id] != nil%>
       <div class="text-right">
         <p>Logged in as: <%= link_to session[:user] , user_path(current_user) %></p>
       <%= link_to 'Logout' , '/logout' , method: :delete %>
