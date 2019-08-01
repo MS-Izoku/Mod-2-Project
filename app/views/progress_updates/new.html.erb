@@ -1,6 +1,2 @@
-<%= form_for @progress_update do |f| %>
-    <!-- This line needs work -->
-    <%= f.collection_select :user_goal_id , UserGoal.where(user_id: session[:user_id]) , :id , :goal_name   %>
-    <%= f.text_area :content %>
-    <%= f.submit 'Show your progress!' %>
-    <% end %>
+<h3>New Update</h3>
+<%= render 'new_edit_form' %>
