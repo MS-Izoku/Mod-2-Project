@@ -20,6 +20,10 @@ class ProgressUpdate < ApplicationRecord
         end
     end
 
+    def find_user_on_update(update)
+        update.user_goal.user
+    end
+
     def goal_completion_status=(status)
         # had to monkey patch to account or a nil
         if self.user_goal != nil

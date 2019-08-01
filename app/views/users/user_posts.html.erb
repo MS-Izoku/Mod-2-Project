@@ -4,8 +4,7 @@
 <%= @user.username %>
 <% @progress_updates.each do |pu| %>
 
-    <li><%= link_to pu.content, progress_update_path %></li>
-    
+    <li><%= link_to pu.content, pu %></li>
 
 <% end %>
 # link to the feed 

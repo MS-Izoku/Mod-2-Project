@@ -2,15 +2,7 @@ class UserGoalsController < ApplicationController
     before_action :find_user_goal, only: [:edit, :update, :show, :destroy]
     before_action :verify_login, only: [:new, :edit, :destroy]
     
-    def complete
-        # byebug
-        p "*******************************************************"
-        @usergoal = UserGoal.find_by(id: params[:id])
-        @usergoal.set_complete
-        redirect_to new_progress_update_path
-    end
     def new
-        # redirect_to login_path and return if !logged_in?
         @usergoal = UserGoal.new
     end
 
@@ -47,7 +39,6 @@ class UserGoalsController < ApplicationController
         @usergoal.destroy
         redirect_to user_path(current_user)
     end
-
 
     private
 
