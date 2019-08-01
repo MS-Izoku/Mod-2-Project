@@ -19,4 +19,8 @@ class UserGoal < ApplicationRecord
     def self.reset_completion(freq) # freq is either daily or weekly
         UserGoal.where(frequency: freq.titlecase , completion: true).all.update_all(completion: false)
     end
+
+    def goal_name
+        self.goal.name
+    end
 end

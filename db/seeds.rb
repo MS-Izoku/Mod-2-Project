@@ -6,8 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.create(username: "Admin" , full_name: "Admin2" , password: "password")
 5.times do
-    User.create(username: Faker::Name.name , city: "Chicago" , programming_language: "Ruby" , password: "password")
+    User.create(username: Faker::Name.name , full_name: Faker::Name.name , city: "Chicago" , programming_language: "Ruby" , password: "password")
 end
 
 Goal.create(name: "I am a Goal")
