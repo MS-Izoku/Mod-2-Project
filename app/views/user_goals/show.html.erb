@@ -6,3 +6,10 @@
 <br><%= @usergoal.completion %>
 <br><%= @usergoal.notes %>
 
+
+
+<% if logged_in? %>
+    <%= link_to 'Edit Goal', edit_user_goal_path %>
+    <%= link_to 'Did you complete your goal?', complete_path(@usergoal) %>
+    <%= render 'delete_button' %>
+<% end %>

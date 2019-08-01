@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   post '/progress_updates/:id' , to: 'progress_updates#post_comment' , as: 'post_comment'
   root to: 'progress_updates#index' , as: 'feed'
-
+  
+  patch '/user_goals/:id' , to: 'user_goals#complete' , as: 'complete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

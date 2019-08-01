@@ -23,19 +23,31 @@ class UserGoalsController < ApplicationController
     end
     
     def edit
-        # redirect_to login_path and return if !logged_in?
     end 
 
     def update
         if @usergoal.update_attributes(usergoal_params)
-          flash[:success] = "UserGoal was successfully updated"
-          redirect_to @usergoal
+            flash[:success] = "UserGoal was successfully updated"
+            redirect_to @usergoal
         else
-          flash[:error] = "Something went wrong"
-          render 'edit'
+            flash[:error] = "Something went wrong"
+            render 'edit'
         end
     end
-    
+
+    def destroy
+        @usergoal.destroy
+        redirect_to user_path(current_user)
+    end
+
+    def complete
+        byebug
+        p "*******************************************************"
+        @usergoal = UserGoal.find_by(id: params[:id])
+        @usergoal.set_complete
+        redirect_to new_progress_update_path
+    end
+
     private
 
     def verify_login
@@ -43,7 +55,7 @@ class UserGoalsController < ApplicationController
     end
 
     def find_user_goal
-        @usergoal = UserGoal.find(params[:id])
+        @usergoal = UserGoal.find_by(id: params[:id])
     end
 
     def usergoal_params

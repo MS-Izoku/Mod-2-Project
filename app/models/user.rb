@@ -23,4 +23,4 @@ class User < ApplicationRecord
         %w(Ruby Javascript HTML)
     end
 
-end 
+end
