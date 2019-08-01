@@ -3,7 +3,6 @@
 
 <%= render 'profile' %>
 
-
 <% if current_user.id == @user.id && logged_in? %>
     <%= render 'active_user' %>
 <% end %>

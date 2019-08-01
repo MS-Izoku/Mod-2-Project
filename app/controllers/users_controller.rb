@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     end 
 
     def show 
+        @user_goals = UserGoal.all 
     end 
 
     def edit 
@@ -29,16 +30,17 @@ class UsersController < ApplicationController
         @user.assign_attributes(user_params)
 
             if @user.save
-              redirect_to @user
+                redirect_to @user
             else
-              render :new
+                render :new
             end
-          end
+        end
          
 
     def destroy
         @user.destroy 
         flash[:notice] = "Account Deleted. Sorry to see you go"
+        redirect_to feed_path 
         # need a path to a home page of some sort. 
     end 
 
