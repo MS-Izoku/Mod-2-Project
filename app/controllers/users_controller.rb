@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :find_user, only: [:edit, :update, :show, :destroy] 
+    before_action :find_user, only: [:edit, :update, :show, :destroy, :user_posts] 
 
     def new
         @user = User.new 
@@ -10,7 +10,6 @@ class UsersController < ApplicationController
         end 
     end 
 
-    
     def create 
         @user = User.new(user_params)
         if @user.valid?
@@ -34,12 +33,16 @@ class UsersController < ApplicationController
     def update
         @user.assign_attributes(user_params)
 
-            if @user.save
-                redirect_to @user
-            else
-                render :new
-            end
+        if @user.save
+            redirect_to @user
+        else
+            render :new
         end
+    end
+
+    def user_posts
+        @progress_updates = @user.progress_updates
+    end
          
 
     def destroy
