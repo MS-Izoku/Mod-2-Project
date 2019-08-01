@@ -15,11 +15,10 @@ class UserGoal < ApplicationRecord
 
     def set_complete
         self.update(completion: true)
-        # ProgressUpdate.create(content: "Task Completed" , user_goal_id: self.id)
     end
 
     def users_with_completion(goal_id)
-        UserGoal.where(completion: true , goal_id: goal_id) # get the users with "completion: true"
+        UserGoal.where(completion: true , goal_id: goal_id)
     end
 
     def self.reset_completion(freq) # freq is either daily or weekly

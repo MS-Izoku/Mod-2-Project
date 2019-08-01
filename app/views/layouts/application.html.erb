@@ -4,7 +4,6 @@
     <title>Mod2Final</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -24,6 +23,7 @@
                   <div class="row">
                     <img class="col-lg-4 avatar-img " src=<%= User.where(id: session[:user_id])[0].img_url %>>
                     <h4 class="col-lg-8 text-left pt-2 pl-1">  <%= session[:user].titlecase %> </h4>
+                    <%= link_to 'Feed', '/' %>
                   </div>
                   </a>
                 </div>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-lg-6">
-              <h2 class="text-center"> APPNAME </h2>
+              <h2 class="text-center"> CoderHabit </h2>
             </div>
 
             <div class="col-lg-3 text-right">

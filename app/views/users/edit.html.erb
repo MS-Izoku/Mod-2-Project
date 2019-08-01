@@ -1,28 +1,20 @@
-<h1>App Name - Update User</h1>
-
-<%= form_for(@user) do |f| %>
-    
-    <%= f.label :name %>
-    <%= f.text_field :full_name %>
-    <br> <br> 
-    <%= f.label :username %>
-    <%= f.text_field :username %>
-    <br> <br>
-    <%= f.label :city %>
-    <%= f.text_field :city %>
-    <br> <br>
-    <%= f.label :programming_language %>
-    <%= f.text_field :programming_language %>
-    <br> <br>
-    <%= f.label :img_url, "Profile Picture" %>
-    <%= f.text_field :img_url%>
-    <br> <br>
-    
-    <br> <br>
-    <%= f.submit %>
+<h3>Edit Your Profile</h3>
+<%= render 'new_edit_form' %>
 
 
-    <% end %>
 
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%= link_to "Go Back", user_path(@user) , class:"btn btn-info mt-1"%>
