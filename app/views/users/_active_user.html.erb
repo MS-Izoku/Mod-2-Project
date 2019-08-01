@@ -1,6 +1,5 @@
-<h3>Things that will be shown on the user's page when they are logged in</h3>
-<h3>------------------------------------------------------</h3>
-<h3>Link to User goals Edit/Delete</h3>
+
+
 
 <% @user.user_goals.each do |user_goal| %>
 <h2><%= link_to user_goal.goal.name, user_goal_path(user_goal) %></h2>
