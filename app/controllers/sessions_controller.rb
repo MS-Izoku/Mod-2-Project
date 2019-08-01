@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
     def new
         if session[:user_id]
+            # byebug
             redirect_to user_path(current_user)
         end
     end

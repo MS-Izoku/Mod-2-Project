@@ -3,6 +3,11 @@ class UsersController < ApplicationController
 
     def new
         @user = User.new 
+        if logged_in? 
+            redirect_to user_path(current_user)
+        else 
+            render :new 
+        end 
     end 
 
     
@@ -38,10 +43,12 @@ class UsersController < ApplicationController
          
 
     def destroy
+        reset_session
+
         @user.destroy 
         flash[:notice] = "Account Deleted. Sorry to see you go"
         redirect_to feed_path 
-        # need a path to a home page of some sort. 
+        
     end 
 
     private
