@@ -1,8 +1,8 @@
 <h2>Progress Updates</h2>
-<%= link_to 'New Update!' , new_progress_update_path %>
+<%#= link_to 'New Update!' , new_user_goal_progress_update_path %>
 <% @progress_updates.each do |update| %>
     <div>
-        <%= link_to update.user_goal.user.username , user_path(update.user_goal.user) %>
+        <%= link_to update.user_goal.user.username , user_posts_path(update.user_goal.user) %>
         <%= link_to update.user_goal.goal.name , user_goal_path(update.user_goal) %>
         <%= link_to "View" , progress_update_path(update)%> <%= update.content %>
         STATUS: <%= update.goal_completion_status ? "COMPLETE" : "INCOMPLETE"  %>

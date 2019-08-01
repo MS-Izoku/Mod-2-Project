@@ -4,12 +4,14 @@ class ProgressUpdatesController < ApplicationController
         if current_user == nil
             redirect_to login_path
         end
-
         @progress_updates = ProgressUpdate.all
     end
 
     def show
-        @progress_update = ProgressUpdate.find_by(id: params[:id])
+        #Show me the individual page for this user_goal 
+
+        @progress_update = ProgressUpdate.find_by(id: params[:id].to_i)
+        
         @comment = Comment.new
     end
 
