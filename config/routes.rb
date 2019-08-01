@@ -10,11 +10,12 @@ Rails.application.routes.draw do
   post '/login' , to: 'sessions#create'
   delete '/logout' , to: 'sessions#destroy'
 
-
+  get '/users/:id/user_posts', to: 'users#user_posts', as: 'user_posts'
   post '/progress_updates/:id' , to: 'progress_updates#post_comment' , as: 'post_comment'
   #delete '/progress_updates/:id' , to: 'progress_updates#delete_comment' , as: 'remove_comment'
   root to: 'progress_updates#index' , as: 'feed'
   
-  patch '/user_goals/:id' , to: 'user_goals#complete' , as: 'complete'
+  # patch '/user_goals/:id' , to: 'user_goals#complete' , as: 'complete'
+  post '/user_goals/complete/:id' , action: :complete , controller: 'user_goals' , as: 'complete'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

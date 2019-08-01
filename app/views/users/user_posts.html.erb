@@ -1,0 +1,11 @@
+<h1>App Name</h1>
+<br><br>
+
+<%= @user.username %>
+<% @progress_updates.each do |pu| %>
+
+    <li><%= link_to pu.content, progress_update_path %></li>
+    
+
+<% end %>
+# link to the feed 
