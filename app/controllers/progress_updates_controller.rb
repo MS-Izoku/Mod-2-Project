@@ -20,13 +20,13 @@ class ProgressUpdatesController < ApplicationController
         if @comment.save
             redirect_to current_path
         else
-            p "Invalid"
+            flash[:error] = ["Invalid Comment"]
+            redirect_to current_path
         end
     end
 
     def delete_comment
         @comment = Comment.find_by(comment_params)
-        #@comment.delete
         redirect_to '/'
     end
 
@@ -41,13 +41,11 @@ class ProgressUpdatesController < ApplicationController
     def create
         @progress_update = ProgressUpdate.new(update_params)
         if @progress_update.save
-            # this has a monkey-patch in the model to account for nil/numerical-string values getting passed
-            #@progress_update.user_goal.update(completion: @progress_update.goal_completion_status)
+            # functions in the model to account for nil/numerical-string values getting passed
             completion = false
             if params[:goal_completion_status] == "1"
                 completion = true
             end
-            p params
 
             @progress_update.user_goal.update(completion: completion)
             redirect_to progress_update_path(@progress_update)
@@ -78,6 +76,4 @@ class ProgressUpdatesController < ApplicationController
     def comment_params
         params.require(:comment).permit(:user_id , :progress_update_id , :content)
     end
-
-
 end
