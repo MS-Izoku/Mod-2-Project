@@ -10,19 +10,42 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-  <div class="sticky-top">
-        <% if session[:user_id] == nil %>
-        <div class="bg-warning">
-          <p class="text-right px-2 pb-2 pt-2"><%= link_to 'Log In' , login_path , class:"btn btn-light" %></p>
-        <% elsif session[:user_id] != nil%>
-        <div class="text-right bg-warning">
-          <p class="px-3 mb-1">Logged in as: <%= link_to session[:user] , user_path(current_user) %></p>
-        <%= link_to 'Logout' , '/logout' , method: :delete , class: "btn btn-light px-3" %>
-      </div>
-        <% end %>
+  <body class="bg-san-marino">
+
+    <div class="sticky-top">
+        <div class="container-fluid bg-mirage pt-3 pb-3"> <!-- App Title / Logo -->
+          <div class="row">
+
+            <div class="col-lg-3">
+              <% if logged_in? %>
+
+                <div class="container">
+                  <a href= <%= user_path(User.where(id: session[:user_id])[0]) %> class="profile-link">
+                  <div class="row profile-link pt-1 pb-1">
+                    <img class="col-lg-4 avatar-img " src=<%= User.where(id: session[:user_id])[0].img_url %>>
+                    <h4 class="col-lg-8 text-left pt-2 pl-1">  <%= session[:user].titlecase %> </h4>
+                  </div>
+                  </a>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="col-lg-6">
+              <h2 class="text-center">APPNAME</h2>
+            </div>
+
+            <div class="col-lg-3 text-right">
+              <% if logged_in? %>
+                <%= link_to 'Logout' , '/logout' , method: :delete , class: "btn btn-light px-2 pt-1" %>
+              <% else %>
+                <%= link_to 'Log In' , login_path , class:"btn btn-info px-2 pt-1" %>
+              <% end %>
+            </div>
+          </div>
+            
+        </div>
     </div>
-    
+      
     <div class="container">
     <%= yield %>
     </div>

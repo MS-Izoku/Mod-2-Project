@@ -13,3 +13,56 @@
  *= require_tree .
  *= require_self
  */
+
+
+ *{
+     color:whitesmoke;
+ }
+
+a:hover{
+    text-decoration: none;
+}
+
+
+ .full-width{
+     min-width: 100vh;
+     width: 100%;
+ }
+
+ .bg-san-marino{
+     background: #4963a9; /* San marino blue */
+ }
+
+ .bg-mirage{
+     background: #171d2c;
+ }
+
+ .avatar-img{
+
+     width: 20%;
+     height: 20%;
+     border-radius: 100vh;
+ }
+
+ .profile-link{
+    background: #171d2c;
+    border-radius: 0.25vh;
+    transition: background 250ms , border-radius 250ms;
+ }
+
+ .profile-link:hover{
+    background: #26314e;
+    border-radius: 2vh;
+    transition: background 150ms , border-radius 250ms;
+ }
+
+
+ .profile-pic{
+     min-width: 25%;
+     max-width: 25%;
+ }
+
+.update-feed-panel{
+    border-radius: 1.5vh;
+    background: #171d2c;
+}
