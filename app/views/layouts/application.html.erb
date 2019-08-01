@@ -5,23 +5,53 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="bg-san-marino">
 
-      <% if session[:user] == nil %>
-      <div> <!-- Log in stuff -->
-        <p><%= link_to 'Log In' , login_path %></p>
-      <% else %>
-      <div class="text-right">
-        <p>Logged in as: <%= link_to session[:user] , user_path(current_user.username) %></p>
-      <%= link_to 'Logout' , '/logout' , method: :delete %>
-    </div>
-        <% end %>
+    <div class="sticky-top">
+        <div class="container-fluid bg-mirage pt-3 pb-3"> <!-- App Title / Logo -->
+          <div class="row">
 
+            <div class="col-lg-3">
+              <% if logged_in? %>
+
+                <div class="container">
+                  <a href= <%= user_path(User.where(id: session[:user_id])[0]) %> >
+                  <div class="row">
+                    <img class="col-lg-4 avatar-img " src=<%= User.where(id: session[:user_id])[0].img_url %>>
+                    <h4 class="col-lg-8 text-left pt-2 pl-1">  <%= session[:user].titlecase %> </h4>
+                  </div>
+                  </a>
+                </div>
+              <% end %>
+            </div>
+
+            <div class="col-lg-6">
+              <h2 class="text-center"> APPNAME </h2>
+            </div>
+
+            <div class="col-lg-3 text-right">
+              <% if logged_in? %>
+                <%= link_to 'Logout' , '/logout' , method: :delete , class: "btn btn-light px-2 pt-1" %>
+              <% else %>
+                <%= link_to 'Log In' , login_path , class:"btn btn-info px-2 pt-1" %>
+              <% end %>
+            </div>
+          </div>
+            
+        </div>
     </div>
+      
+    <div class="container">
     <%= yield %>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>

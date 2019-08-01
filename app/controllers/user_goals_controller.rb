@@ -2,14 +2,22 @@ class UserGoalsController < ApplicationController
     before_action :find_user_goal, only: [:edit, :update, :show, :destroy]
     before_action :verify_login, only: [:new, :edit, :destroy]
     
+    def complete
+        # byebug
+        p "*******************************************************"
+        @usergoal = UserGoal.find_by(id: params[:id])
+        @usergoal.set_complete
+        redirect_to new_progress_update_path
+    end
     def new
         # redirect_to login_path and return if !logged_in?
         @usergoal = UserGoal.new
     end
 
     def create
-        @usergoal = UserGoal.new(usergoal_params)
-        @usergoal.user_id = current_user.id
+        @usergoal = UserGoal.new_for_user(current_user, usergoal_params)
+
+        
         if @usergoal.save
             flash[:success] = "UserGoal successfully created"
             redirect_to @usergoal
@@ -23,19 +31,24 @@ class UserGoalsController < ApplicationController
     end
     
     def edit
-        # redirect_to login_path and return if !logged_in?
     end 
 
     def update
         if @usergoal.update_attributes(usergoal_params)
-          flash[:success] = "UserGoal was successfully updated"
-          redirect_to @usergoal
+            flash[:success] = "UserGoal was successfully updated"
+            redirect_to @usergoal
         else
-          flash[:error] = "Something went wrong"
-          render 'edit'
+            flash[:error] = "Something went wrong"
+            render 'edit'
         end
     end
-    
+
+    def destroy
+        @usergoal.destroy
+        redirect_to user_path(current_user)
+    end
+
+
     private
 
     def verify_login
@@ -43,7 +56,7 @@ class UserGoalsController < ApplicationController
     end
 
     def find_user_goal
-        @usergoal = UserGoal.find(params[:id])
+        @usergoal = UserGoal.find_by(id: params[:id])
     end
 
     def usergoal_params
