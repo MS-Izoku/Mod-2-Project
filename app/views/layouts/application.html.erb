@@ -20,8 +20,8 @@
               <% if logged_in? %>
 
                 <div class="container">
-                  <a href= <%= user_path(User.where(id: session[:user_id])[0]) %> class="profile-link">
-                  <div class="row profile-link pt-1 pb-1">
+                  <a href= <%= user_path(User.where(id: session[:user_id])[0]) %> >
+                  <div class="row">
                     <img class="col-lg-4 avatar-img " src=<%= User.where(id: session[:user_id])[0].img_url %>>
                     <h4 class="col-lg-8 text-left pt-2 pl-1">  <%= session[:user].titlecase %> </h4>
                   </div>
@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-lg-6">
-              <h2 class="text-center">APPNAME</h2>
+              <h2 class="text-center"> APPNAME </h2>
             </div>
 
             <div class="col-lg-3 text-right">

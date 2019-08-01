@@ -19,6 +19,10 @@
      color:whitesmoke;
  }
 
+ textarea{
+    color:black;
+ }
+
 a:hover{
     text-decoration: none;
 }

@@ -3,9 +3,9 @@
 <%= link_to 'New Update!' , new_progress_update_path %>
 
 <% @progress_updates.each do |update| %>
-    <div class="update-feed-panel">
-        <div class="">
-        <h4 class="mx-3 pt-3"><%= link_to update.user_goal.user.username , user_path(update.user_goal.user) %></h4>
+    <div class="container update-feed-panel">
+        <div class="btn btn-info pt-0 pb-0 mt-0 mb-0">
+        <h4 class="mx-3 pt-3"><%= link_to update.user_goal.user.username.titlecase , user_path(update.user_goal.user) %></h4>
         </div>
 
         <h3 class="text-center pb-4 pt-2"><%= link_to update.user_goal.goal.name , user_goal_path(update.user_goal) %></h3>
