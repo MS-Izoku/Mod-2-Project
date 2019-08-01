@@ -1,5 +1,6 @@
 class ProgressUpdatesController < ApplicationController
 
+
     def index
         if current_user == nil
             redirect_to login_path
@@ -32,6 +33,7 @@ class ProgressUpdatesController < ApplicationController
 
     def new
         @progress_update = ProgressUpdate.new
+        @current_goals = UserGoal.where(id: session[:user_id]).to_a
     end
 
     def create
