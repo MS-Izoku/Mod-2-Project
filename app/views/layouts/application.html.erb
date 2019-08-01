@@ -11,7 +11,8 @@
   </head>
 
   <body>
-
+      <%= link_to 'Feed', '/' %>
+      <%#= link_to 'Your Posts', user_posts_path %>
       <% if session[:user_id] == nil %>
       <div> <!-- Log in stuff -->
         <p><%= link_to 'Log In' , login_path %></p>

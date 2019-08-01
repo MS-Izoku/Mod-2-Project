@@ -15,6 +15,7 @@
 
 <% if logged_in? %>
     <%= link_to 'Edit Goal', edit_user_goal_path %>
-    <%= link_to 'Did you complete your goal?', complete_path , method: :post %>
+    <%#= link_to 'Did you complete your goal?', complete_path(@usergoal) %>
+    <%= link_to 'Did you complete your goal?', new_user_goal_progress_update_path(@usergoal) %>
     <%= render 'delete_button' %>
 <% end %>

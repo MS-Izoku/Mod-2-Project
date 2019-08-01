@@ -1,8 +1,6 @@
-<%= form_for @progress_update do |f| %>
-    <%= f.collection_select :user_goal_id , UserGoal.where(user_id: session[:user_id]) , :id , :goal_name   %>
+<%= form_for [@usergoal, @progress_update] do |f| %>
+    <%= f.label "Content"%>
     <%= f.text_area :content %>
-
-    <%= f.label :complete %>
-    <%= f.check_box :goal_completion_status %><br>
+    
     <%= f.submit 'Show your progress!' %>
 <% end %>
