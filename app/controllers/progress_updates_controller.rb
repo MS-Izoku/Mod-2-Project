@@ -31,6 +31,9 @@ class ProgressUpdatesController < ApplicationController
     end
 
     def new
+        if UserGoal.where(user_id: session[:user_id]).first == nil
+            redirect_to new_user_goal_path
+        end
         @progress_update = ProgressUpdate.new
         @current_goals = UserGoal.where(id: session[:user_id]).to_a
     end
