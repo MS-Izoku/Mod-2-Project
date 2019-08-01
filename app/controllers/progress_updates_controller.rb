@@ -14,6 +14,7 @@ class ProgressUpdatesController < ApplicationController
     end
 
     def post_comment
+        #redirect_to new_comment_path
         @comment = Comment.new(comment_params)
         @comment.user_id = session[:user_id]
         @comment.progress_update_id = params[:id]
@@ -46,7 +47,6 @@ class ProgressUpdatesController < ApplicationController
             if params[:goal_completion_status] == "1"
                 completion = true
             end
-
             @progress_update.user_goal.update(completion: completion)
             redirect_to progress_update_path(@progress_update)
         else
