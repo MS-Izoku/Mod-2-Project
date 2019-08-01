@@ -1,10 +1,10 @@
-<h1><%= @usergoal.goal.name %>: <%= @usergoal.user.username %></h1>
+<h1>Hey <%= @usergoal.user.username %>! How is your <%= @usergoal.frequency.downcase %> goal of: <%= @usergoal.goal.name.downcase %>, going? </h1>
 
 <div>
-    <%= @usergoal.user.full_name %>
-    <%= @usergoal.user.username %>
-    <%= @usergoal.frequency %>
-    <%= @usergoal.completion %>
+    
+   
+    
+    <h4>Completion Status: <%= @usergoal.completion %></h4>
 </div>
 
 <div>
