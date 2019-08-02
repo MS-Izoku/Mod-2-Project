@@ -1,6 +1,10 @@
-<%= form_for [@usergoal, @progress_update] do |f| %>
-    <%= f.label "Content"%>
-    <%= f.text_area :content %>
-    
-    <%= f.submit 'Show your progress!' %>
-<% end %>
+<div class="container rounded bg-info mb-2 mt-2 pb-2 pt-2">
+    <%= form_for [@usergoal, @progress_update] , class:"form-group" do |f| %>
+        <%= f.label "Content" , class:"form-label"%>
+        <%= f.text_area :content , class:"form-control"%>
+        
+        <div class="text-center">
+            <%= f.submit 'Show your progress!' , class:"btn btn-light mt-2" %>
+        </div>
+    <% end %>
+</div>

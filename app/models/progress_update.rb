@@ -15,8 +15,8 @@ class ProgressUpdate < ApplicationRecord
         end
     end
 
-    def find_user_on_update(update)
-        update.user_goal.user
+    def find_user_on_update
+        self.user_goal.user
     end
 
     def goal_completion_status=(status)

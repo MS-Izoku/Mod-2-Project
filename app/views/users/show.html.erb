@@ -2,9 +2,23 @@
     <h3> <% UserGoal.reset_completion("Daily") %><h3>
     <h3> <% UserGoal.reset_completion("Weekly") %><h3>
     <h1><%= flash[:notice] = "Admin Declares a New Day!"%></h1>
-<% else %> 
+<% else %>
+    <% if current_user.id == @user.id && logged_in? %>
+    <div class="rounded bg-white text-center mt-2 pt-1 pb-1 mb-3">
+    <h3 class="align-block">
+    <hr>
+        <%= link_to "Add a New Goal", new_user_goal_path , class:"btn btn-info mx-5"%>
+        <%= link_to "Edit Profile", edit_user_path(@user) , class:"btn btn-info mx-5"%>
+        <%= link_to "Delete Profile", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, class:"btn btn-info mx-5"%>
+    <hr>
+        </h3>
+    </div>
+    <% end %>
+    <div class="container">
     <%= render 'profile' %>
+
     <% if current_user.id == @user.id && logged_in? %>
         <%= render 'active_user' %>
     <% end %>
+    </div>
 <% end %>

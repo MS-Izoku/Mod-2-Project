@@ -14,9 +14,28 @@
  *= require_self
  */
 
+ @font-face {
+    font-family: 'simplifica';
+    src: url("assets/simplifica_typeface-webfont.woff") format('woff'),
+         url("assets/simplifica_typeface-webfont.woff2") format('woff2'),
+         url("assets/SIMPLIFICA.ttf") format('truetype');
 
+    /* src: url(/fonts/simplifica_typeface-webfont.woff) format('woff'),
+         url(/fonts/simplifica_typeface-webfont.woff2) format('woff2'),
+         url(/fonts/SIMPLIFICA.ttf) format('truetypeface'); */
+    font-weight: normal;
+    font-style: normal;
+}
+
+  
  *{
      color:whitesmoke;
+ }
+
+ h1{
+    font-family: simplifica;
+    font-size: 5em;
+
  }
 
  textarea{
@@ -41,10 +60,14 @@ a:hover{
      background: #171d2c;
  }
 
+ .title-color{
+     color: #c8c322
+ }
+
  .avatar-img{
 
-     width: 20%;
-     height: 20%;
+     width: 50%;
+     height: 50%;
      border-radius: 100vh;
  }
 
@@ -62,11 +85,16 @@ a:hover{
 
 
  .profile-pic{
-     min-width: 25%;
-     max-width: 25%;
+     min-width: 50%;
+     max-width: 100%;
  }
 
 .update-feed-panel{
     border-radius: 1.5vh;
     background: #171d2c;
 }
+.black-text{
+    color: black;
+}
+
+
