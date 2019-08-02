@@ -1,9 +1,9 @@
-<br><br>
+<div>
 <h3>Look at all those crushed goals <%= @user.username %>!</h3>
-
 <% @progress_updates.each do |pu| %>
 
     <h3><li><%= link_to pu.content, pu %></li></h3>
 
 <% end %>
+</div>
 <%= link_to "Go Back", user_path(@user) , class:"btn btn-info mt-1"%>

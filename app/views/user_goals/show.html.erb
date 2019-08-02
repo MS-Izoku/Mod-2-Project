@@ -1,27 +1,26 @@
-<h1>Hey <%= @usergoal.user.username %>! How is <%= @usergoal.goal.name.downcase %> going? </h1>
 
-<div>
-    
-   
-    <% if @usergoal.completion %>
-        <h3>You CRUSHED it!!!</h3>
-    <% else %>
-        <h3>Keep working at it!</h3>
-    <% end %>
-    
-    <h4>Frequency: <%= @usergoal.frequency.downcase %></h4>
+<div class="container bg-info rounded pb-2 pt-4 mt-3">
+    <h2 class="text-center pt-2 mb-0">Hey <%= @usergoal.user.username %>! How is <%= @usergoal.goal.name.downcase %> going?</h2>
+
+    <div class="container pt-3 pb-3">
+        <hr><hr>
+            <h4 class="text-center">Completion Status: <%= @usergoal.completion ? "You CRUSHED it!!!" : "Keep working at it!" %></h4>
+        <hr><hr>
+    </div>
+
+    <div class="bg-info container">
+        <h4>Frequency: <%= @usergoal.frequency.downcase %></h4>
+        <%= simple_format(@usergoal.notes) %>
+
+        <% if logged_in? %>
+        <div class=" bg-light rounded">
+            <h3 class="text-center pt-2 pb-2">
+                <%= link_to 'Edit Goal', edit_user_goal_path , class:"px-5" %>
+                <%= link_to 'Did you complete your goal?', new_user_goal_progress_update_path(@usergoal) , class:"px-5" %>
+                <%= render 'delete_button' %>
+            </h3>
+        </div>
+        <% end %>
+        <%= link_to "Go Back", user_path(@usergoal.user) , class:"btn btn-info mt-1"%>
+    </div>
 </div>
-
-<div>
-<h4>Notes: <%= @usergoal.notes %></h4>
-</div>
-
-
-<% if logged_in? %>
-    <%= link_to 'Edit Goal', edit_user_goal_path %>
-    <%#= link_to 'Did you complete your goal?', complete_path(@usergoal) %>
-    <%= link_to 'Did you complete your goal?', new_user_goal_progress_update_path(@usergoal) %>
-    <%= render 'delete_button' %>
-<% end %>
-<br>
-<%= link_to "Go Back", user_path(@usergoal.user) , class:"btn btn-info mt-1"%>

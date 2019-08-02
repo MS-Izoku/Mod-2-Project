@@ -1,7 +1,7 @@
 class UserGoal < ApplicationRecord
     belongs_to :user
     belongs_to :goal
-    has_many :progress_updates
+    has_many :progress_updates, dependent: :destroy
 
     def self.new_for_user(user, params)
         self.new(params).tap do |user_goal|
