@@ -1,21 +1,30 @@
-<div class="container bg-danger pb-2">
+<div class="container bg-info pb-2">
 <h2 class="text-center">Progress Updates</h2>
 <%#= link_to 'New Update!' , new_progress_update_path %>
 
-<% @progress_updates.each do |update| %>
-    <div class="container update-feed-panel">
-        <div class="btn btn-info pt-0 pb-0 mt-0 mb-0">
-        <h4 class="mx-3 pt-3"><%= link_to update.user_goal.user.username , user_posts_path(update.user_goal.user) %></h4>
-        </div>
 
-        <h3 class="text-center pb-4 pt-2"><%= link_to update.user_goal.goal.name , user_goal_path(update.user_goal) %></h3>
-        
-        <div>
-            <h4 class="text-center"> <%= update.content %></h4>
-            <%= link_to "View" , progress_update_path(update)%>
+<div id="feed-acc" class="bg-white">
+    <% @progress_updates.each do |update| %>
+        <div class="card">
+        <div class="container update-feed-panel">
+            
+            <div class="btn btn-info pt-0 pb-0 mt-0 mb-0 mt-3">
+                <h4 class="mx-3 pt-2">
+                    <%= link_to update.user_goal.user.username , user_posts_path(update.user_goal.user) , class:"text-light"%>
+                </h4>
+            </div>
+
+            <hr>
+            <h3 class="text-center pb-2 pt-2"><%= link_to update.user_goal.goal.name , user_goal_path(update.user_goal) %></h3>
+            <hr>
+
+            <div>
+                <h4 class="text-center"> <%= update.content %></h4>
+                <%= link_to "View" , progress_update_path(update)%>
+            </div>
+            
+            <p class="text-center pb-1">STATUS: <%= update.goal_completion_status ? "COMPLETE" : "INCOMPLETE"  %></p>
         </div>
-        
-        <p class="text-center pb-1">STATUS: <%= update.goal_completion_status ? "COMPLETE" : "INCOMPLETE"  %></p>
+    <% end %>
     </div>
-<% end %>
 </div>
