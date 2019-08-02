@@ -10,4 +10,8 @@ module ApplicationHelper
     def current_path
         Rails.application.routes.recognize_path(request.fullpath)
     end
+
+    def admin?
+        current_user.id == 1
+    end
 end

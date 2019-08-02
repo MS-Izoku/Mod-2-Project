@@ -1,8 +1,10 @@
-
-
-<%= render 'profile' %>
-
-<% if current_user.id == @user.id && logged_in? %>
-    <%= render 'active_user' %>
+<% if admin? %>
+    <h3> <% UserGoal.reset_completion("Daily") %><h3>
+    <h3> <% UserGoal.reset_completion("Weekly") %><h3>
+    <h1><%= flash[:notice] = "Admin Declares a New Day!"%></h1>
+<% else %> 
+    <%= render 'profile' %>
+    <% if current_user.id == @user.id && logged_in? %>
+        <%= render 'active_user' %>
+    <% end %>
 <% end %>
-

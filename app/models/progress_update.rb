@@ -5,10 +5,6 @@ class ProgressUpdate < ApplicationRecord
 
     has_many :users , through: :comments
 
-    def like_count  # we can use this to sort later
-        self.likes.count
-    end
-
     def comment_count   # we can use this to sort later
         self.comments.count
     end

@@ -8,9 +8,9 @@ class User < ApplicationRecord
     validates :username, presence: true, uniqueness: true 
     validates :img_url, presence: true 
     validates :full_name, presence: true 
-
-    def like_count
-        self.likes.count
+       
+    def post_count
+        self.progress_updates.count
     end
 
     def comment_count
@@ -18,7 +18,7 @@ class User < ApplicationRecord
     end
     
     def self.languages
-        %w(Ruby Javascript HTML)
+        %w(Ruby Javascript Java Python C C++ C# SQL R Go Scala Rust)
     end
 
 end

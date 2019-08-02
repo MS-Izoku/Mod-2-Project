@@ -4,6 +4,7 @@ class UserGoalsController < ApplicationController
     
     def new
         @usergoal = UserGoal.new
+        @goals = Goal.all.sort_by { |g| g.post_count }.reverse
     end
 
     def create
