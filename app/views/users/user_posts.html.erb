@@ -1,10 +1,9 @@
-<h1>App Name</h1>
 <br><br>
+<h3>Look at all those crushed goals <%= @user.username %>!</h3>
 
-<%= @user.username %>
 <% @progress_updates.each do |pu| %>
 
-    <li><%= link_to pu.content, pu %></li>
+    <h3><li><%= link_to pu.content, pu %></li></h3>
 
 <% end %>
-# link to the feed 
+<%= link_to "Go Back", user_path(@user) , class:"btn btn-info mt-1"%>

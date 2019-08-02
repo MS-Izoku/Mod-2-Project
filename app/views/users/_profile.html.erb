@@ -1,12 +1,11 @@
 
-
 <h2><p>Username: <%= @user.username %></p></h2>
 <h3><p>Name: <%= @user.full_name %></p></h3>
 <h3><p>City: <%= @user.city %></p></h3>
 <h3><p>Programming Language: <%= @user.programming_language %></p></h3>
+<h3><%= link_to "#{@user.post_count} Goals Completed So Far!", user_posts_path %></h3>
 <br><br><br>
 <img src = <%= @user.img_url %> >
 <br><br>
-<h4><%= link_to 'See My Goal Progress', user_posts_path %></h4>
 <br><br><br>
 
