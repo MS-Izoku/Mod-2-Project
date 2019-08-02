@@ -1,13 +1,13 @@
 <% if @errors %>
-<div class="error-handling">
-<% @errors.each do |error| %>
-  <p class="text-center"><%= error %></p>
-<% end %>
-</div>
+  <div class="error-handling">
+    <% @errors.each do |error| %>
+      <p class="text-center"><%= error %></p>
+    <% end %>
+  </div>
 <% end %>
 
-<div class="bg-mirage p-2 rounded">
-  <%= form_for(@user , html: { class:"form-group p-3" }) do |f| %>
+<div class="bg-info p-1 rounded">
+  <%= form_for(@user , html: { class:"form-group p-5 bg-mirage rounded" }) do |f| %>
       
       <%= f.label :name , class:"form-label mt-1 mb-1"%>
       <%= f.text_field :full_name , class:"form-control mb-3" , placeholder: "name" %>
@@ -31,7 +31,7 @@
       <%= f.text_field :img_url , class: "form-control mb-3", placeholder:".jpg / .png"%>
 
       <div class="text-center pt-5">
-        <%= f.submit "Submit" , class:"btn btn-info btn-block p-2" %>
+        <%= f.submit "Submit" , class:"btn btn-info btn-block px-1 pt-3 pb-3" %>
       </div>
 
       <% end %>
