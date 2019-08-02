@@ -1,4 +1,13 @@
 
+<div class="rounded bg-white text-center mt-2 pt-1 pb-1 mb-3">
+<h3 class="align-block">
+<hr>
+    <%= link_to "Add a New Goal", new_user_goal_path , class:"btn btn-info mx-5"%>
+    <%= link_to "Edit Profile", edit_user_path(@user) , class:"btn btn-info mx-5"%>
+    <%= link_to "Delete Profile", @user, method: :delete, data: {confirm: "Are you sure you want to delete your account?"}, class:"btn btn-info mx-5"%>
+<hr>
+    </h3>
+</div>
 <div class="container">
 <%= render 'profile' %>
 

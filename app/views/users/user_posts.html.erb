@@ -1,7 +1,9 @@
-<%= @user.username %>
+<div>
+<h3><%= @user.username %></h3>
 <% @progress_updates.each do |pu| %>
 
     <li><%= link_to pu.content, pu %></li>
 
 <% end %>
+</div>
 # link to the feed 
