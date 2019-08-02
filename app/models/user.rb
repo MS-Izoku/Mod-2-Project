@@ -13,6 +13,10 @@ class User < ApplicationRecord
         self.likes.count
     end
 
+    def post_count
+        self.progress_updates.count
+    end
+
     def comment_count
         self.comments.count
     end

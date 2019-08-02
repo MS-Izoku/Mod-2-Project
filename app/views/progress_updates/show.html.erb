@@ -6,7 +6,7 @@
 <div id="update-container">
     <%= simple_format(@progress_update.content) %>
     <!-- <p>STATUS: <%= @progress_update.goal_completion_status ? "COMPLETE" : "INCOMPLETE" %></p> -->
-    <p><%= @progress_update.created_at %></p>
+    <p><%= @progress_update.created_at.strftime("%A, %d %b %Y %l:%M %p") %></p>
 </div>
 
 <div id="comment-feed">
@@ -14,7 +14,7 @@
         <div>
         <div><%= comment.user.username %></div>
             <div><%= simple_format(comment.content) %></div>
-            <div><%= comment.created_at %></div>
+            <div><%= comment.created_at.strftime("%A, %d %b %Y %l:%M %p") %></div>
             <% if comment.user == current_user %>
                 <%= link_to 'Delete' , comment , method: :delete , id: comment.id %>
             <% end %>

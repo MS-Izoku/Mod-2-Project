@@ -1,10 +1,8 @@
-<h1>App Name</h1>
 <br><br>
-
+<h3>Look at all those crushed goals!</h3>
 <%= @user.username %>
 <% @progress_updates.each do |pu| %>
 
     <li><%= link_to pu.content, pu %></li>
 
 <% end %>
-# link to the feed 
