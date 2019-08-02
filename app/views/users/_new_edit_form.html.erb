@@ -1,27 +1,29 @@
-<div><%= form_for(@user) do |f| %>
+<div>
+<%= form_for(@user , html: { class:"form-group" }) do |f| %>
     
-    <%= f.label :name %>
-    <%= f.text_field :full_name %>
+    <%= f.label :name , class:"form-label mt-1 mb-1"%>
+    <%= f.text_field :full_name , class:"form-control" , placeholder: "name" %>
     <br> <br> 
     <%= f.label :username %>
-    <%= f.text_field :username %>
+    <%= f.text_field :username , class:"form-control" , placeholder: "username"%>
     <br> <br> 
     <%= f.label :password %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password , class:"form-control" , placeholder: "password"%>
     <br> <br>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation , class:"form-control" , placeholder: "password confirm" %>
     <br> <br>
     <%= f.label :city %>
-    <%= f.text_field :city %>
+    <%= f.text_field :city , class:"form-control" , placeholder: "city" %>
     <br> <br>
-    <%= f.label :programming_language %>
-    <%= f.select :programming_language, User.languages %>
+    <%= f.label :programming_language , class:"form-label"%>
+    <%# f.select :programming_language, User.languages , {class: "black-text"}%>
+    <%= f.select :programming_language, options_for_select(User.languages) , {}, {:class => 'form-control'}  %> 
     <br> <br>
     <%= f.label :img_url, "Profile Picture" %>
-    <%= f.text_field :img_url %>
+    <%= f.text_field :img_url , class: "form-control", placeholder:".jpg / .png"%>
     <br> <br>
-    <%= f.submit %>
+    <%= f.submit "Submit" , class:"btn btn-info" %>
 
      <% end %></div>
 
