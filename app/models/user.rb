@@ -18,7 +18,7 @@ class User < ApplicationRecord
     end
     
     def self.languages
-        %w(Ruby Javascript HTML)
+        %w(Ruby Javascript Java Python C C++ C# SQL R Go Scala Rust)
     end
 
 end

@@ -9,7 +9,7 @@ class ProgressUpdatesController < ApplicationController
     end
 
     def show
-        @progress_update = ProgressUpdate.find_by(id: params[:id].to_i)
+        @progress_update = ProgressUpdate.find_by(id: params[:id])
         @comment = Comment.new
     end
 
