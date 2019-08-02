@@ -6,4 +6,9 @@ class Goal < ApplicationRecord
     def user_count
         self.users.count
     end
+
+    def post_count
+        self.progress_updates.count
+    end
+    
 end
