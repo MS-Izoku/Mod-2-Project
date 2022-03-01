@@ -30,7 +30,7 @@ gem 'jbuilder', '~> 2.5'
  gem 'bcrypt', '~> 3.1.7'
 
 # makes sure image type is actually an image (used for profile)
- gem 'image_processing', '~> 1.2'
+ gem 'image_processing', '~> 1.12'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
